@@ -4,12 +4,12 @@
 Summary:	%{_modname} - transliterates non-latin character sets to latin
 Summary(pl):	%{_modname} - translitacja alfabetów nie³aciñskich do ³aciñskiego
 Name:		php-pecl-%{_modname}
-Version:	0.1
+Version:	0.2
 Release:	1
 License:	PHP
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
-# Source0-md5:	382a2acf6f98432997dee4f2b8c1bcc2
+# Source0-md5:	cd82fa5feb19a74c5a0d6bb60a9af8e3
 URL:		http://pecl.php.net/package/tanslit/
 BuildRequires:	libtool
 BuildRequires:	php-devel >= 3:5.0.0
