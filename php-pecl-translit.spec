@@ -1,8 +1,8 @@
 %define		_modname	translit
 %define		_status		beta
 
-Summary:	%{_modname} - Transliterates non-latin character sets to latin
-#Summary(pl):	%{_modname} - Transliterowanie zestawów znaków nie³aciñskich do ³aciñskich
+Summary:	%{_modname} - transliterates non-latin character sets to latin
+Summary(pl):	%{_modname} - translitacja alfabetów nie³aciñskich do ³aciñskiego
 Name:		php-pecl-%{_modname}
 Version:	0.1
 Release:	1
