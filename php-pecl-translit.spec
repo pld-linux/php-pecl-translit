@@ -10,7 +10,7 @@ License:	PHP
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
 # Source0-md5:	cd82fa5feb19a74c5a0d6bb60a9af8e3
-URL:		http://pecl.php.net/package/tanslit/
+URL:		http://pecl.php.net/package/translit/
 BuildRequires:	libtool
 BuildRequires:	php-devel >= 3:5.0.0
 Requires:	php-common >= 3:5.0.0
