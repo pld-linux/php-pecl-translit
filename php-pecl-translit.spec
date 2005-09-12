@@ -34,8 +34,8 @@ In PECL status of this extension is: %{_status}.
 %description -l pl
 To rozszerzenie umo¿liwia transliteracjê tekstu ze znaków
 nie³aciñskich (takich jak chiñskie, cyrilica, greckie) na znaki
-³aciñskie. Oprócz transliteracji rozszerzenie zawiera tak¿e filtry
-na wielkie i ma³e litery ³aciñskie, cyrylicê i greckie oraz wykonuje
+³aciñskie. Oprócz transliteracji rozszerzenie zawiera tak¿e filtry na
+wielkie i ma³e litery ³aciñskie, cyrylicê i greckie oraz wykonuje
 specjalne formy transliteracji, takie jak konwersja ligatur takich jak
 norweska ligatura "ae" na oddzielne znaki "ae" oraz normalizacja
 znaków przestankowych i odstêpów.
