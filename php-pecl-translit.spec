@@ -6,7 +6,7 @@ Summary:	%{_modname} - transliterates non-latin character sets to latin
 Summary(pl):	%{_modname} - translitacja alfabetów nie³aciñskich do ³aciñskiego
 Name:		php-pecl-%{_modname}
 Version:	0.5
-Release:	4
+Release:	5
 License:	PHP
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
