@@ -1,7 +1,7 @@
 %define		_modname	translit
 %define		_status		beta
 Summary:	%{_modname} - transliterates non-latin character sets to latin
-Summary(pl):	%{_modname} - translitacja alfabetów nie³aciñskich do ³aciñskiego
+Summary(pl.UTF-8):   %{_modname} - translitacja alfabetÃ³w nieÅ‚aciÅ„skich do Å‚aciÅ„skiego
 Name:		php-pecl-%{_modname}
 Version:	0.5
 Release:	6
@@ -28,14 +28,14 @@ punctuation and spacing.
 
 In PECL status of this extension is: %{_status}.
 
-%description -l pl
-To rozszerzenie umo¿liwia transliteracjê tekstu ze znaków
-nie³aciñskich (takich jak chiñskie, cyrilica, greckie) na znaki
-³aciñskie. Oprócz transliteracji rozszerzenie zawiera tak¿e filtry na
-wielkie i ma³e litery ³aciñskie, cyrylicê i greckie oraz wykonuje
+%description -l pl.UTF-8
+To rozszerzenie umoÅ¼liwia transliteracjÄ™ tekstu ze znakÃ³w
+nieÅ‚aciÅ„skich (takich jak chiÅ„skie, cyrilica, greckie) na znaki
+Å‚aciÅ„skie. OprÃ³cz transliteracji rozszerzenie zawiera takÅ¼e filtry na
+wielkie i maÅ‚e litery Å‚aciÅ„skie, cyrylicÄ™ i greckie oraz wykonuje
 specjalne formy transliteracji, takie jak konwersja ligatur takich jak
 norweska ligatura "ae" na oddzielne znaki "ae" oraz normalizacja
-znaków przestankowych i odstêpów.
+znakÃ³w przestankowych i odstÄ™pÃ³w.
 
 To rozszerzenie ma w PECL status: %{_status}.
 
