@@ -1,7 +1,7 @@
 %define		_modname	translit
 %define		_status		beta
 Summary:	%{_modname} - transliterates non-latin character sets to latin
-Summary(pl.UTF-8):   %{_modname} - translitacja alfabetów niełacińskich do łacińskiego
+Summary(pl.UTF-8):	%{_modname} - translitacja alfabetów niełacińskich do łacińskiego
 Name:		php-pecl-%{_modname}
 Version:	0.5
 Release:	6
