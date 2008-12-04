@@ -3,13 +3,14 @@
 Summary:	%{_modname} - transliterates non-latin character sets to latin
 Summary(pl.UTF-8):	%{_modname} - translitacja alfabetów niełacińskich do łacińskiego
 Name:		php-pecl-%{_modname}
-Version:	0.5
-Release:	6
+Version:	0.6.0
+Release:	1
 License:	PHP
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
-# Source0-md5:	a22fc5ad0ee0686b3aafd642bae9ec31
+# Source0-md5:	9d2966402f4a02de993d6996424bda25
 URL:		http://pecl.php.net/package/translit/
+BuildRequires:	libtool
 BuildRequires:	php-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.344
 %{?requires_php_extension}
@@ -41,9 +42,9 @@ To rozszerzenie ma w PECL status: %{_status}.
 
 %prep
 %setup -q -c
+mv %{_modname}-%{version}/* .
 
 %build
-cd %{_modname}-%{version}
 phpize
 %configure
 %{__make}
@@ -52,7 +53,7 @@ phpize
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_sysconfdir}/conf.d,%{php_extensiondir}}
 
-install %{_modname}-%{version}/modules/%{_modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
+install modules/%{_modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
 cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{_modname}.ini
 ; Enable %{_modname} extension module
 extension=%{_modname}.so
