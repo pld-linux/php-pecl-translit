@@ -4,7 +4,7 @@ Summary:	%{_modname} - transliterates non-latin character sets to latin
 Summary(pl.UTF-8):	%{_modname} - translitacja alfabetów niełacińskich do łacińskiego
 Name:		php-pecl-%{_modname}
 Version:	0.6.0
-Release:	2
+Release:	3
 License:	PHP
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
@@ -15,6 +15,7 @@ BuildRequires:	php-devel >= 3:5.0.0
 BuildRequires:	rpmbuild(macros) >= 1.344
 %{?requires_php_extension}
 Requires:	php-common >= 4:5.0.4
+Requires:	php-iconv
 Obsoletes:	php-pear-%{_modname}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
