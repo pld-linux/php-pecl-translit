@@ -1,13 +1,13 @@
-%define		_modname	translit
-%define		_status		beta
-Summary:	%{_modname} - transliterates non-latin character sets to latin
-Summary(pl.UTF-8):	%{_modname} - translitacja alfabetów niełacińskich do łacińskiego
-Name:		php-pecl-%{_modname}
+%define		status		beta
+%define		modname	translit
+Summary:	%{modname} - transliterates non-latin character sets to latin
+Summary(pl.UTF-8):	%{modname} - translitacja alfabetów niełacińskich do łacińskiego
+Name:		php-pecl-%{modname}
 Version:	0.6.0
 Release:	6
 License:	PHP
 Group:		Development/Languages/PHP
-Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
+Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	9d2966402f4a02de993d6996424bda25
 URL:		http://pecl.php.net/package/translit/
 BuildRequires:	libtool
@@ -16,7 +16,6 @@ BuildRequires:	rpmbuild(macros) >= 1.344
 %{?requires_php_extension}
 Requires:	php-common >= 4:5.0.4
 Requires:	php-iconv
-Obsoletes:	php-pear-%{_modname}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -28,7 +27,7 @@ forms of transliteration such as converting ligatures such as the
 Norwegian "ae" ligature to separate "ae" characters and normalizing
 punctuation and spacing.
 
-In PECL status of this extension is: %{_status}.
+In PECL status of this extension is: %{status}.
 
 %description -l pl.UTF-8
 To rozszerzenie umożliwia transliterację tekstu ze znaków
@@ -39,11 +38,11 @@ specjalne formy transliteracji, takie jak konwersja ligatur takich jak
 norweska ligatura "ae" na oddzielne znaki "ae" oraz normalizacja
 znaków przestankowych i odstępów.
 
-To rozszerzenie ma w PECL status: %{_status}.
+To rozszerzenie ma w PECL status: %{status}.
 
 %prep
-%setup -q -c
-mv %{_modname}-%{version}/* .
+%setup -qc
+mv %{modname}-%{version}/* .
 
 %build
 phpize
@@ -54,10 +53,10 @@ phpize
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_sysconfdir}/conf.d,%{php_extensiondir}}
 
-install modules/%{_modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
-cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{_modname}.ini
-; Enable %{_modname} extension module
-extension=%{_modname}.so
+install -p modules/%{modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
+cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
+; Enable %{modname} extension module
+extension=%{modname}.so
 EOF
 
 %clean
@@ -73,5 +72,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{_modname}.ini
-%attr(755,root,root) %{php_extensiondir}/%{_modname}.so
+%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{modname}.ini
+%attr(755,root,root) %{php_extensiondir}/%{modname}.so
