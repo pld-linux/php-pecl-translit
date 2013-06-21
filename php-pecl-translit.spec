@@ -13,7 +13,7 @@ Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 URL:		http://pecl.php.net/package/translit/
 BuildRequires:	%{php_name}-devel >= 3:5.0.0
 BuildRequires:	libtool
-BuildRequires:	rpmbuild(macros) >= 1.344
+BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
 Requires:	%{php_name}-iconv
 Requires:	php(core) >= 5.0.4
