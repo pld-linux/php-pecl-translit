@@ -5,19 +5,19 @@ Summary:	%{modname} - transliterates non-latin character sets to latin
 Summary(pl.UTF-8):	%{modname} - translitacja alfabetów niełacińskich do łacińskiego
 Name:		%{php_name}-pecl-%{modname}
 Version:	0.6.1
-Release:	8
+Release:	9
 License:	PHP
 Group:		Development/Languages/PHP
 Source0:	http://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	67bdee44c3dbcc3ab7ee39329da8e010
 URL:		http://pecl.php.net/package/translit/
-BuildRequires:	%{php_name}-devel >= 3:5.0.0
+BuildRequires:	%{php_name}-devel >= 3:5.0.4
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
 Requires:	%{php_name}-iconv
-Requires:	php(core) >= 5.0.4
 Provides:	php(%{modname}) = %{version}
+Obsoletes:	php-pecl-translit < 0.6.1-8
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
