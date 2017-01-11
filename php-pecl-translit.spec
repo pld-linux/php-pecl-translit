@@ -1,5 +1,8 @@
+#
+# Conditional build:
+%bcond_without	tests		# build without tests
+
 %define		php_name	php%{?php_suffix}
-%define		status		beta
 %define		modname		translit
 Summary:	%{modname} - transliterates non-latin character sets to latin
 Summary(pl.UTF-8):	%{modname} - translitacja alfabetów niełacińskich do łacińskiego
@@ -14,6 +17,10 @@ URL:		https://github.com/derickr/pecl-translit
 BuildRequires:	%{php_name}-devel >= 3:5.0.4
 BuildRequires:	libtool
 BuildRequires:	rpmbuild(macros) >= 1.650
+%if %{with tests}
+BuildRequires:	%{php_name}-cli
+BuildRequires:	%{php_name}-iconv
+%endif
 %{?requires_php_extension}
 Requires:	%{php_name}-iconv
 Provides:	php(%{modname}) = %{version}
@@ -29,8 +36,6 @@ forms of transliteration such as converting ligatures such as the
 Norwegian "ae" ligature to separate "ae" characters and normalizing
 punctuation and spacing.
 
-In PECL status of this extension is: %{status}.
-
 %description -l pl.UTF-8
 To rozszerzenie umożliwia transliterację tekstu ze znaków
 niełacińskich (takich jak chińskie, cyrilica, greckie) na znaki
@@ -40,8 +45,6 @@ specjalne formy transliteracji, takie jak konwersja ligatur takich jak
 norweska ligatura "ae" na oddzielne znaki "ae" oraz normalizacja
 znaków przestankowych i odstępów.
 
-To rozszerzenie ma w PECL status: %{status}.
-
 %prep
 %setup -qc
 mv pecl-translit-*/* .
@@ -50,6 +53,28 @@ mv pecl-translit-*/* .
 phpize
 %configure
 %{__make}
+
+%if %{with tests}
+# simple module load test
+%{__php} -n -q \
+	-d extension_dir=modules \
+	-d extension=%{php_extensiondir}/iconv.so \
+	-d extension=%{modname}.so \
+	-m > modules.log
+grep %{modname} modules.log
+
+cat <<'EOF' > run-tests.sh
+#!/bin/sh
+export NO_INTERACTION=1 REPORT_EXIT_STATUS=1 MALLOC_CHECK_=2
+exec %{__make} test \
+	PHP_EXECUTABLE=%{__php} \
+	PHP_TEST_SHARED_SYSTEM_EXTENSIONS="iconv" \
+	RUN_TESTS_SETTINGS="-q $*"
+EOF
+chmod +x run-tests.sh
+
+./run-tests.sh
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
