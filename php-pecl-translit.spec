@@ -20,6 +20,7 @@ BuildRequires:	rpmbuild(macros) >= 1.650
 %if %{with tests}
 BuildRequires:	%{php_name}-cli
 BuildRequires:	%{php_name}-iconv
+BuildRequires:	%{php_name}-pcre
 %endif
 %{?requires_php_extension}
 Requires:	%{php_name}-iconv
