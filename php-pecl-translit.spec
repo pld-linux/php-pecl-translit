@@ -8,18 +8,18 @@ Summary:	%{modname} - transliterates non-latin character sets to latin
 Summary(pl.UTF-8):	%{modname} - translitacja alfabetów niełacińskich do łacińskiego
 Name:		%{php_name}-pecl-%{modname}
 Version:	0.6.2
-Release:	1
+Release:	2
 License:	PHP
 Group:		Development/Languages/PHP
 Source0:	https://github.com/derickr/pecl-translit/archive/RELEASE_0_6_2.tar.gz
 # Source0-md5:	599a00bb624d1ebc8440698aa89585dc
 URL:		https://github.com/derickr/pecl-translit
 BuildRequires:	%{php_name}-devel >= 3:5.0.4
-BuildRequires:	libtool
-BuildRequires:	rpmbuild(macros) >= 1.650
-%if %{with tests}
 BuildRequires:	%{php_name}-cli
 BuildRequires:	%{php_name}-iconv
+BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.666
+%if %{with tests}
 BuildRequires:	%{php_name}-pcre
 %endif
 %{?requires_php_extension}
@@ -50,20 +50,6 @@ znaków przestankowych i odstępów.
 %setup -qc
 mv pecl-translit-*/* .
 
-%build
-phpize
-%configure
-%{__make}
-
-%if %{with tests}
-# simple module load test
-%{__php} -n -q \
-	-d extension_dir=modules \
-	-d extension=%{php_extensiondir}/iconv.so \
-	-d extension=%{modname}.so \
-	-m > modules.log
-grep %{modname} modules.log
-
 cat <<'EOF' > run-tests.sh
 #!/bin/sh
 export NO_INTERACTION=1 REPORT_EXIT_STATUS=1 MALLOC_CHECK_=2
@@ -74,7 +60,21 @@ exec %{__make} test \
 EOF
 chmod +x run-tests.sh
 
-./run-tests.sh
+%build
+phpize
+%configure
+%{__make}
+
+# simple module load test
+%{__php} -n -q \
+	-d extension_dir=modules \
+	-d extension=%{php_extensiondir}/iconv.so \
+	-d extension=%{modname}.so \
+	-m > modules.log
+grep %{modname} modules.log
+
+%if %{with tests}
+./run-tests.sh --show-diff
 %endif
 
 %install
