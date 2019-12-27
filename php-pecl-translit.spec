@@ -8,7 +8,7 @@ Summary:	%{modname} - transliterates non-latin character sets to latin
 Summary(pl.UTF-8):	%{modname} - translitacja alfabetów niełacińskich do łacińskiego
 Name:		%{php_name}-pecl-%{modname}
 Version:	0.6.2
-Release:	3
+Release:	4
 License:	PHP
 Group:		Development/Languages/PHP
 Source0:	https://github.com/derickr/pecl-translit/archive/RELEASE_0_6_2.tar.gz
@@ -82,7 +82,12 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_sysconfdir}/conf.d,%{php_extensiondir}}
 
 install -p modules/%{modname}.so $RPM_BUILD_ROOT%{php_extensiondir}
+%if "%php_major_version.%php_minor_version" >= "7.4"
+# order after ext-iconv
+cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/01_%{modname}.ini
+%else
 cat <<'EOF' > $RPM_BUILD_ROOT%{php_sysconfdir}/conf.d/%{modname}.ini
+%endif
 ; Enable %{modname} extension module
 extension=%{modname}.so
 EOF
@@ -100,5 +105,5 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/%{modname}.ini
+%config(noreplace) %verify(not md5 mtime size) %{php_sysconfdir}/conf.d/*%{modname}.ini
 %attr(755,root,root) %{php_extensiondir}/%{modname}.so
