@@ -9,7 +9,7 @@ Summary(pl.UTF-8):	%{modname} - translitacja alfabetów niełacińskich do łaci
 Name:		%{php_name}-pecl-%{modname}
 Version:	0.6.3
 Release:	1
-License:	PHP
+License:	BSD
 Group:		Development/Languages/PHP
 Source0:	https://pecl.php.net/get/%{modname}-%{version}.tgz
 # Source0-md5:	4816be2da4bd063132f14cef9e1b51be
